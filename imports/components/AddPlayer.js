@@ -5,11 +5,13 @@ export default class AddPlayer extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		const name = e.target.playerName.value;
-		e.target.playerName.value = '';
-		Players.insert({
-			name,
-			score: 0
-		});
+		if (name) {
+			e.target.playerName.value = '';
+			Players.insert({
+				name,
+				score: 0
+			});
+		}
 	}
 
 	render() {

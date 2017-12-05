@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import { Players } from '../api/players';
+import PropTypes from 'prop-types';
 import Player from './Player';
 
 export default class PlayerList extends Component {
-	renderList(list) {
-		return list
-			.sort((item1, item2) => item2.score - item1.score)
-			.map(item => <Player key={item._id} player={item} />);
+	renderList() {
+		const { players } = this.props;
+		if (players.length === 0) {
+			return <div>Add your first player</div>;
+		}
+		return players.map(item => <Player key={item._id} player={item} />);
 	}
 
 	render() {
-		const { players } = this.props;
-		return <ul className="list-group">{this.renderList(players)}</ul>;
+		return <ul className="list-group">{this.renderList()}</ul>;
 	}
 }
+
+PlayerList.propsType = {
+	players: PropTypes.array.isRequired
+};
