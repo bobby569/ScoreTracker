@@ -6,12 +6,14 @@ import AddPlayer from './AddPlayer';
 
 export default class App extends Component {
 	render() {
-		const { title, players } = this.props;
+		const { title, subtitle, players } = this.props;
 		return (
-			<div className="container">
-				<TitleBar title={title} />
-				<PlayerList players={players} />
-				<AddPlayer />
+			<div>
+				<TitleBar title={title} subtitle={subtitle} />
+				<div className="wrapper">
+					<PlayerList players={players} />
+					<AddPlayer />
+				</div>
 			</div>
 		);
 	}

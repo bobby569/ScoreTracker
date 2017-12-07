@@ -4,33 +4,40 @@ import { Players } from '../api/players';
 
 export default class Player extends Component {
 	updateScore(_id, amount) {
-		Players.update({ _id }, { $inc: { score: amount } });
+		Players.update(_id, { $inc: { score: amount } });
 	}
 
 	render() {
 		const { player } = this.props;
 		return (
-			<li className="list-group-item">
-				{player.name} has {player.score} point(s).
-				<button
-					className="btn btn-danger"
-					onClick={() => Players.remove({ _id: player._id })}
-				>
-					X
-				</button>
-				<button
-					className="btn btn-primary"
-					onClick={() => this.updateScore(player._id, 1)}
-				>
-					+
-				</button>
-				<button
-					className="btn btn-primary"
-					onClick={() => this.updateScore(player._id, -1)}
-				>
-					-
-				</button>
-			</li>
+			<div className="item">
+				<div className="player">
+					<div>
+						<h3 className="player__name">{player.name}</h3>
+						<p className="player__stats">{player.score} point(s)</p>
+					</div>
+					<div className="player__actions">
+						<button
+							className="button button--round"
+							onClick={() => this.updateScore(player._id, 1)}
+						>
+							+
+						</button>
+						<button
+							className="button button--round"
+							onClick={() => this.updateScore(player._id, -1)}
+						>
+							-
+						</button>
+						<button
+							className="button button--round"
+							onClick={() => Players.remove({ _id: player._id })}
+						>
+							X
+						</button>
+					</div>
+				</div>
+			</div>
 		);
 	}
 }

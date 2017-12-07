@@ -16,15 +16,17 @@ export default class AddPlayer extends Component {
 
 	render() {
 		return (
-			<form className="form-inline" onSubmit={this.handleSubmit}>
-				<input
-					className="form-control"
-					type="text"
-					name="playerName"
-					placeholder="Name"
-				/>
-				<button className="btn btn-primary">Add Player</button>
-			</form>
+			<div className="item">
+				<form className="form" onSubmit={this.handleSubmit}>
+					<input
+						className="form__input"
+						type="text"
+						name="playerName"
+						placeholder="Name"
+					/>
+					<button className="button">Add Player</button>
+				</form>
+			</div>
 		);
 	}
 }

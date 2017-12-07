@@ -9,8 +9,9 @@ Meteor.startup(() => {
 	Tracker.autorun(() => {
 		const players = Players.find({}, { sort: { score: -1 } }).fetch();
 		const title = 'Score Keeper';
+		const subtitle = 'Powered by Angular (jk)';
 		ReactDOM.render(
-			<App title={title} players={players} />,
+			<App title={title} subtitle={subtitle} players={players} />,
 			document.getElementById('app')
 		);
 	});
