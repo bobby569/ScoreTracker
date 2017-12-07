@@ -8,30 +8,33 @@ export default class Player extends Component {
 	}
 
 	render() {
-		const { player } = this.props;
+		const { player: { name, rank, position, score, _id } } = this.props;
+		const itemClassName = `item item--position-${rank}`;
 		return (
-			<div className="item">
+			<div className={itemClassName}>
 				<div className="player">
 					<div>
-						<h3 className="player__name">{player.name}</h3>
-						<p className="player__stats">{player.score} point(s)</p>
+						<h3 className="player__name">{name}</h3>
+						<p className="player__stats">
+							{position} place - {score} point(s)
+						</p>
 					</div>
 					<div className="player__actions">
 						<button
 							className="button button--round"
-							onClick={() => this.updateScore(player._id, 1)}
+							onClick={() => this.updateScore(_id, 1)}
 						>
 							+
 						</button>
 						<button
 							className="button button--round"
-							onClick={() => this.updateScore(player._id, -1)}
+							onClick={() => this.updateScore(_id, -1)}
 						>
 							-
 						</button>
 						<button
 							className="button button--round"
-							onClick={() => Players.remove({ _id: player._id })}
+							onClick={() => Players.remove({ _id })}
 						>
 							X
 						</button>
